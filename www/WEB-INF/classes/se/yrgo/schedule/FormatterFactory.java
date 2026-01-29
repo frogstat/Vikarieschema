@@ -1,12 +1,13 @@
 package se.yrgo.schedule;
 
+import java.io.InvalidClassException;
+
 /**
  * A factory to get a formatter (only HTML is implemented)
  */
 public class FormatterFactory {
 
     private static Formatter XML_FORMATTER = new XmlFormatter();
-    private static Formatter HTML_FORMATTER = new HtmlFormatter();
     private static Formatter JSON_FORMATTER = new JsonFormatter();
 
     /**
@@ -17,12 +18,12 @@ public class FormatterFactory {
      * contentType. Defaults to HTML. Cannot handle null.
      */
     public static Formatter getFormatter(String contentType) {
-        if (contentType.contains("xml")) {
+        if (contentType.equalsIgnoreCase("xml")) {
             return XML_FORMATTER;
-        } else if (contentType.contains("json")) {
+        } else if (contentType.equalsIgnoreCase("json")) {
             return JSON_FORMATTER;
         } else {
-            return HTML_FORMATTER;
+            throw new IllegalArgumentException("Format not supported");
         }
     }
 }
