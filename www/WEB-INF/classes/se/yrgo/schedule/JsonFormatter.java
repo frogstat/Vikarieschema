@@ -6,7 +6,8 @@ public class JsonFormatter implements Formatter{
 
     @Override
     public String format(List<Assignment> assignments) {
-        return "";
+
+        return "[ { \\\"some-key\\\": \\\"some-value\\\" } ]";
     }
 
 }
