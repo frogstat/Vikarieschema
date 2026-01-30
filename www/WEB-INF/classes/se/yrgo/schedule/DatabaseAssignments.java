@@ -32,7 +32,9 @@ public class DatabaseAssignments implements Assignments {
         try {
             ResultSet rs = db.fetch(SELECT_ALL);
             while (rs.next()) {
-                result.add(new Assignment(rs.getString("name"), rs.getString("day"), rs.getString("school_name")));
+
+                result.add(new Assignment(new School(rs.getString("school_name"), "Kometgatan 5A"),
+                        new Substitute(rs.getString("name")), rs.getString("day")));
             }
             return result;
         } catch (SQLException sqle) {
@@ -45,7 +47,8 @@ public class DatabaseAssignments implements Assignments {
         try {
             ResultSet rs = db.fetch(SELECT_WITH_SUBSTITUTE_ID + teacherId);
             while (rs.next()) {
-                result.add(new Assignment(rs.getString("name"), rs.getString("day"), rs.getString("school_name")));
+                result.add(new Assignment(new School(rs.getString("school_name"), "Kometgatan 5A"),
+                        new Substitute(rs.getString("name")), rs.getString("day")));
             }
             return result;
         } catch (SQLException sqle) {
@@ -58,7 +61,8 @@ public class DatabaseAssignments implements Assignments {
         try {
             ResultSet rs = db.fetch(SELECT_ALL + " where schedule.day = '" + date + " 08:00:00'");
             while (rs.next()) {
-                result.add(new Assignment(rs.getString("name"), rs.getString("day"), rs.getString("school_name")));
+                result.add(new Assignment(new School(rs.getString("school_name"), "Kometgatan 5A"),
+                        new Substitute(rs.getString("name")), rs.getString("day")));
             }
             return result;
         } catch (SQLException sqle) {
@@ -72,7 +76,8 @@ public class DatabaseAssignments implements Assignments {
             ResultSet rs = db.fetch(SELECT_WITH_SUBSTITUTE_ID + teacherId + " and schedule.day='" + date + " 08:00:00'");
             System.out.println(SELECT_WITH_SUBSTITUTE_ID + teacherId + " and schedule.day='" + date + " 08:00:00'");
             while (rs.next()) {
-                result.add(new Assignment(rs.getString("name"), rs.getString("day"), rs.getString("school_name")));
+                result.add(new Assignment(new School(rs.getString("school_name"), "Kometgatan 5A"),
+                        new Substitute(rs.getString("name")), rs.getString("day")));
             }
             return result;
         } catch (SQLException sqle) {

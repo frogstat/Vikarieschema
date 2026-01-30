@@ -7,21 +7,21 @@ package se.yrgo.schedule;
  * assignment (the school where the teacher should teach).
  */
 public class Assignment {
-    private String teacher;
+    private Substitute substitute;
+    private School school;
     private String date;
-    private String school;
 
     /**
      * Creates a new Assignment
      *
-     * @param teacher This assignment's teacher's name
-     * @param date    The date of this Assignment
-     * @param school  The school of this Assignment
+     * @param substitute This assignment's teacher's name
+     * @param date       The date of this Assignment
+     * @param school     The school of this Assignment
      */
-    public Assignment(String teacher, String date, String school) {
-        this.teacher = teacher;
-        this.date = date;
+    public Assignment(School school, Substitute substitute, String date) {
+        this.substitute = substitute;
         this.school = school;
+        this.date = date;
     }
 
     /**
@@ -29,8 +29,8 @@ public class Assignment {
      *
      * @return This Assignment's teacher's name
      */
-    public String teacher() {
-        return this.teacher;
+    public Substitute substitute() {
+        return this.substitute;
     }
 
     /**
@@ -47,7 +47,7 @@ public class Assignment {
      *
      * @return This Assignment's school
      */
-    public String school() {
+    public School school() {
         return this.school;
     }
 
@@ -58,9 +58,7 @@ public class Assignment {
      */
     @Override
     public String toString() {
-        return new StringBuilder(date)
-                .append(" (").append(teacher).append(")")
-                .append(" at ").append(school)
-                .toString();
+        return " (" + substitute.getName() + ")" +
+                " at " + school.getName() + ", " + school.getAddress();
     }
 }
