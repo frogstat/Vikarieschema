@@ -26,6 +26,7 @@ public class XmlFormatter implements Formatter {
 
             for (Assignment assignment : assignments) {
                 Element assignmentElement = doc.createElement("schedule");
+                assignmentElement.setAttribute("date", assignment.date());
 
                 Element substitute = doc.createElement("substitute");
                 substitute.appendChild(doc.createTextNode(assignment.substitute().getName()));
@@ -38,12 +39,8 @@ public class XmlFormatter implements Formatter {
                 school.appendChild(schoolName);
                 school.appendChild(schoolAddress);
 
-                Element date = doc.createElement("date");
-                date.appendChild(doc.createTextNode(assignment.date()));
-
                 assignmentElement.appendChild(substitute);
                 assignmentElement.appendChild(school);
-                assignmentElement.appendChild(date);
                 rootElement.appendChild(assignmentElement);
             }
 

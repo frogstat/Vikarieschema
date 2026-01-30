@@ -11,12 +11,12 @@ import java.sql.SQLException;
 public class DatabaseAssignments implements Assignments {
 
     private static final String SELECT_ALL =
-            new StringBuilder("select day, name, school_name from schedule")
+            new StringBuilder("select day, name, school_name, address from schedule")
                     .append(" join substitute on schedule.substitute_id=substitute.substitute_id")
                     .append(" join school on schedule.school_id = school.school_id")
                     .toString();
     private static final String SELECT_WITH_SUBSTITUTE_ID =
-            new StringBuilder("select day, name, school_name from schedule")
+            new StringBuilder("select day, name, school_name, address from schedule")
                     .append(" join substitute on schedule.substitute_id=substitute.substitute_id")
                     .append(" join school on schedule.school_id = school.school_id WHERE substitute.substitute_id=")
                     .toString();
@@ -33,7 +33,7 @@ public class DatabaseAssignments implements Assignments {
             ResultSet rs = db.fetch(SELECT_ALL);
             while (rs.next()) {
 
-                result.add(new Assignment(new School(rs.getString("school_name"), "Kometgatan 5A"),
+                result.add(new Assignment(new School(rs.getString("school_name"), rs.getString("address")),
                         new Substitute(rs.getString("name")), rs.getString("day")));
             }
             return result;
@@ -47,7 +47,7 @@ public class DatabaseAssignments implements Assignments {
         try {
             ResultSet rs = db.fetch(SELECT_WITH_SUBSTITUTE_ID + teacherId);
             while (rs.next()) {
-                result.add(new Assignment(new School(rs.getString("school_name"), "Kometgatan 5A"),
+                result.add(new Assignment(new School(rs.getString("school_name"), rs.getString("address")),
                         new Substitute(rs.getString("name")), rs.getString("day")));
             }
             return result;
@@ -61,7 +61,7 @@ public class DatabaseAssignments implements Assignments {
         try {
             ResultSet rs = db.fetch(SELECT_ALL + " where schedule.day = '" + date + " 08:00:00'");
             while (rs.next()) {
-                result.add(new Assignment(new School(rs.getString("school_name"), "Kometgatan 5A"),
+                result.add(new Assignment(new School(rs.getString("school_name"), rs.getString("address")),
                         new Substitute(rs.getString("name")), rs.getString("day")));
             }
             return result;
@@ -76,7 +76,7 @@ public class DatabaseAssignments implements Assignments {
             ResultSet rs = db.fetch(SELECT_WITH_SUBSTITUTE_ID + teacherId + " and schedule.day='" + date + " 08:00:00'");
             System.out.println(SELECT_WITH_SUBSTITUTE_ID + teacherId + " and schedule.day='" + date + " 08:00:00'");
             while (rs.next()) {
-                result.add(new Assignment(new School(rs.getString("school_name"), "Kometgatan 5A"),
+                result.add(new Assignment(new School(rs.getString("school_name"), rs.getString("address")),
                         new Substitute(rs.getString("name")), rs.getString("day")));
             }
             return result;
