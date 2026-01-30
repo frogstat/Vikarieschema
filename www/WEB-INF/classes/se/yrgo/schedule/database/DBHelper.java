@@ -1,4 +1,4 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.database;
 
 import java.sql.*;
 

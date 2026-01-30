@@ -1,6 +1,4 @@
-package se.yrgo.schedule;
-
-import java.io.InvalidClassException;
+package se.yrgo.schedule.formatter;
 
 /**
  * A factory to get a formatter (only HTML is implemented)

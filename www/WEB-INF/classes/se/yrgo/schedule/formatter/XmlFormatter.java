@@ -1,14 +1,14 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.formatter;
 
-import javax.print.Doc;
-import javax.xml.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
 import javax.xml.transform.stream.*;
 
 import org.w3c.dom.*;
+import se.yrgo.schedule.domain.Assignment;
 
 import java.io.StringWriter;
 import java.util.List;
@@ -17,6 +17,10 @@ public class XmlFormatter implements Formatter {
 
     @Override
     public String format(List<Assignment> assignments) {
+        if (assignments.isEmpty()) {
+            return "<schedules></schedules>";
+        }
+
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -44,17 +48,20 @@ public class XmlFormatter implements Formatter {
                 rootElement.appendChild(assignmentElement);
             }
 
-            TransformerFactory tf = TransformerFactory.newInstance();
-            Transformer transformer = tf.newTransformer();
+            StringWriter xml = new StringWriter();
+            TransformerFactory transformerFactory =
+                    TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer
+                    .setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(xml);
+            transformer.transform(source, result);
+            return xml.toString();
 
-            StringWriter writer = new StringWriter();
-            transformer.transform(new DOMSource(doc), new StreamResult(writer));
-            return writer.toString();
-
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (ParserConfigurationException | TransformerException e) {
+            return "XML Error";
         }
     }
 

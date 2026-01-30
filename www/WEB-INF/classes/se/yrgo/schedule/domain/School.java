@@ -1,4 +1,4 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.domain;
 
 import java.util.Objects;
 

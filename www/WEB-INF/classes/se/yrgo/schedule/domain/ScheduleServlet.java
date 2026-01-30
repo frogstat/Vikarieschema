@@ -1,7 +1,11 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.domain;
+
+import se.yrgo.schedule.database.AccessException;
+import se.yrgo.schedule.database.ParamParser;
+import se.yrgo.schedule.formatter.Formatter;
+import se.yrgo.schedule.formatter.FormatterFactory;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +27,9 @@ public class ScheduleServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String format = request.getParameter("format");
+
         if (format != null && format.equals("xml")) {
             response.setContentType("application/xml");
         } else if (format != null && format.equals("json")) {
@@ -74,10 +80,14 @@ public class ScheduleServlet extends HttpServlet {
             String result = formatter.format(assignments);
             out.println(result);
 
+            if (result.equals("[]") || result.equals("<schedules></schedules>")) {
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            }
+
         } catch (IllegalArgumentException e) {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             out.println("<html><head><title>Format error</title></head>");
-            out.println("<body>Format missing or not supported");
+            out.println("<body>400 - BAD REQUEST.\nFormat missing or not supported");
             out.println(" - We support xml and json</body>");
             out.println("</html>");
         }

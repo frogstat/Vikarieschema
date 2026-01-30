@@ -1,4 +1,6 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.domain;
+
+import se.yrgo.schedule.database.DatabaseAssignments;
 
 public class AssignmentsFactory {
     private AssignmentsFactory() {

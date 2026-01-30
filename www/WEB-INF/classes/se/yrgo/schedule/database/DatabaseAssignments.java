@@ -1,4 +1,9 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.database;
+
+import se.yrgo.schedule.domain.Assignment;
+import se.yrgo.schedule.domain.Assignments;
+import se.yrgo.schedule.domain.School;
+import se.yrgo.schedule.domain.Substitute;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +79,6 @@ public class DatabaseAssignments implements Assignments {
         List<Assignment> result = new ArrayList<>();
         try {
             ResultSet rs = db.fetch(SELECT_WITH_SUBSTITUTE_ID + teacherId + " and schedule.day='" + date + " 08:00:00'");
-            System.out.println(SELECT_WITH_SUBSTITUTE_ID + teacherId + " and schedule.day='" + date + " 08:00:00'");
             while (rs.next()) {
                 result.add(new Assignment(new School(rs.getString("school_name"), rs.getString("address")),
                         new Substitute(rs.getString("name")), rs.getString("day")));

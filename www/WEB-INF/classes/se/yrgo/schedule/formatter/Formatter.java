@@ -1,4 +1,6 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.formatter;
+
+import se.yrgo.schedule.domain.Assignment;
 
 import java.util.List;
 

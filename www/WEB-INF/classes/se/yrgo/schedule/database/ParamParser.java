@@ -1,4 +1,4 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.database;
 
 import javax.servlet.http.*;
 
@@ -126,6 +126,7 @@ public class ParamParser {
     public QueryType type() {
         return type;
     }
+
 
     /**
      * Returns this parser as a String representation. Mostly for debuggin.
