@@ -5,8 +5,8 @@ import se.yrgo.schedule.database.ParamParser;
 import se.yrgo.schedule.domain.Assignment;
 import se.yrgo.schedule.domain.Assignments;
 import se.yrgo.schedule.domain.AssignmentsFactory;
-import se.yrgo.schedule.formatter.Formatter;
-import se.yrgo.schedule.formatter.FormatterFactory;
+import se.yrgo.schedule.format.Formatter;
+import se.yrgo.schedule.format.FormatterFactory;
 
 import java.io.IOException;
 import java.io.PrintWriter;

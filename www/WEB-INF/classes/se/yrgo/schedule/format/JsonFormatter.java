@@ -1,4 +1,4 @@
-package se.yrgo.schedule.formatter;
+package se.yrgo.schedule.format;
 
 import org.json.*;
 import se.yrgo.schedule.domain.Assignment;

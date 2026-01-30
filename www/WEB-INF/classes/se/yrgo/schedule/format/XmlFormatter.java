@@ -1,4 +1,4 @@
-package se.yrgo.schedule.formatter;
+package se.yrgo.schedule.format;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
