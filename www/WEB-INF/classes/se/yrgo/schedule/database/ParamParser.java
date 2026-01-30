@@ -12,12 +12,12 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  * <li>day</li>
  * <li>teacherId</li>
  * <li>contentType</li>
- * <li>format (html|json|xml) (only html is implemented in this example)</li>
+ * <li>format (html|json|xml) (only HTML is implemented in this example)</li>
  * </ul>
  * </p>
  */
 public class ParamParser {
-    enum QueryType {
+    public enum QueryType {
         ALL,
         TEACHER_ID,
         DAY,
