@@ -7,9 +7,9 @@ package se.yrgo.schedule.domain;
  * assignment (the school where the teacher should teach).
  */
 public class Assignment {
-    private Substitute substitute;
-    private School school;
-    private String date;
+    private final Substitute substitute;
+    private final School school;
+    private final String date;
 
     /**
      * Creates a new Assignment

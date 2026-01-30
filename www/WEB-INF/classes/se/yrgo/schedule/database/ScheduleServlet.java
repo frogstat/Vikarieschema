@@ -1,7 +1,8 @@
-package se.yrgo.schedule.domain;
+package se.yrgo.schedule.database;
 
-import se.yrgo.schedule.database.AccessException;
-import se.yrgo.schedule.database.ParamParser;
+import se.yrgo.schedule.domain.Assignment;
+import se.yrgo.schedule.domain.Assignments;
+import se.yrgo.schedule.domain.AssignmentsFactory;
 import se.yrgo.schedule.formatter.Formatter;
 import se.yrgo.schedule.formatter.FormatterFactory;
 
@@ -54,19 +55,12 @@ public class ScheduleServlet extends HttpServlet {
         // Call the correct method, depending on the parser's type value
         try {
             StringBuilder table;
-            switch (parser.type()) {
-                case ALL:
-                    assignments = db.all();
-                    break;
-                case TEACHER_ID_AND_DAY:
-                    assignments = db.forTeacherAt(parser.teacherId(), parser.day());
-                    break;
-                case DAY:
-                    assignments = db.at(parser.day());
-                    break;
-                case TEACHER_ID:
-                    assignments = db.forTeacher(parser.teacherId());
-            }
+            assignments = switch (parser.type()) {
+                case ALL -> db.all();
+                case TEACHER_ID_AND_DAY -> db.forTeacherAt(parser.teacherId(), parser.day());
+                case DAY -> db.at(parser.day());
+                case TEACHER_ID -> db.forTeacher(parser.teacherId());
+            };
         } catch (AccessException e) {
             out.println("Error fetching data: " + e.getMessage());
             System.err.println("Error: " + e);

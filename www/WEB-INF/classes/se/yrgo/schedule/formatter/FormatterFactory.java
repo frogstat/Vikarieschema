@@ -5,8 +5,8 @@ package se.yrgo.schedule.formatter;
  */
 public class FormatterFactory {
 
-    private static Formatter XML_FORMATTER = new XmlFormatter();
-    private static Formatter JSON_FORMATTER = new JsonFormatter();
+    private static final Formatter XML_FORMATTER = new XmlFormatter();
+    private static final Formatter JSON_FORMATTER = new JsonFormatter();
 
     /**
      * Returns a formatter for the given contentType

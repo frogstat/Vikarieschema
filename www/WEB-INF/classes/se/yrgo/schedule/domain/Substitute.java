@@ -2,7 +2,7 @@ package se.yrgo.schedule.domain;
 
 public class Substitute {
 
-    private String name;
+    private final String name;
 
     public Substitute(String name) {
         this.name = name;

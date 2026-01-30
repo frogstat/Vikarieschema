@@ -72,7 +72,7 @@ public class ParamParser {
             type = QueryType.ALL;
         } else if (day != null && teacherId != null) {
             type = QueryType.TEACHER_ID_AND_DAY;
-        } else if (day != null && teacherId == null) {
+        } else if (day != null) {
             type = QueryType.DAY;
         } else {
             type = QueryType.TEACHER_ID;

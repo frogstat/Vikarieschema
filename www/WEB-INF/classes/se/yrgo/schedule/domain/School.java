@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class School {
 
-    private String name;
-    private String address;
+    private final String name;
+    private final String address;
 
     public School(String name, String address) {
         this.name = name;
