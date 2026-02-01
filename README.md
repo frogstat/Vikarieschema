@@ -10,7 +10,8 @@ run compile_and_run.sh to start the server.
 
 test_head.sh tests status codes for the website to make sure they're right.
 
-Usage:
+Usage on bash:
+
 ```
 git clone https://github.com/frogstat/Vikarieschema.git
 
@@ -30,3 +31,4 @@ lwp-request -m HEAD http://localhost:8080/v1?format=json
 ./test_head.sh
 
 ```
+If using Powershell, rethink your life decisions.
