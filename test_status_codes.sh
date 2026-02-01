@@ -14,7 +14,7 @@ check_status(){
 }
 
 
-echo "Testing headers..."
+echo "Testing status codes..."
 echo ""
 echo "Testing valid URL. Should return 200"
 my_status=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' "http://localhost:8080/v1?format=json&substitute_id=1")
