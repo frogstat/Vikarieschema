@@ -8,7 +8,7 @@ Supports only JSON and XML.
 
 run compile_and_run.sh to start the server.
 
-test_head.sh tests status codes for the website to make sure they're right.
+test_status_codes.sh tests status codes for the website to make sure they're right.
 
 Usage on bash:
 
@@ -28,7 +28,7 @@ In seperate terminal:
 
 lwp-request -m HEAD http://localhost:8080/v1?format=json
 
-./test_head.sh
+./test_status_codes.sh
 
 ```
 If using Powershell, rethink your life decisions.
