@@ -17,21 +17,16 @@ check_status(){
 echo "Testing headers..."
 echo ""
 echo "Testing valid URL. Should return 200"
-sleep 1
 my_status=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' "http://localhost:8080/v1?format=json&substitute_id=1")
 check_status $my_status "200"
 echo $my_status
 
-sleep 1
 echo "Testing valid URL, but invalid substitute_id. Should return 404."
-sleep 1
 my_status=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' "http://localhost:8080/v1?format=json&substitute_id=122")
 check_status $my_status "404"
 echo $my_status
 
-sleep 1
 echo "Testing invalid format. Should return 400."
-sleep 1
 my_status=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' "http://localhost:8080/v1?format=idunno")
 check_status $my_status "400"
 echo $my_status

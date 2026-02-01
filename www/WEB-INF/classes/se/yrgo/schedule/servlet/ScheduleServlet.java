@@ -2,7 +2,7 @@ package se.yrgo.schedule.servlet;
 
 import se.yrgo.schedule.database.AccessException;
 import se.yrgo.schedule.domain.Assignment;
-import se.yrgo.schedule.domain.Assignments;
+import se.yrgo.schedule.database.Assignments;
 import se.yrgo.schedule.domain.AssignmentsFactory;
 import se.yrgo.schedule.format.Formatter;
 import se.yrgo.schedule.format.FormatterFactory;

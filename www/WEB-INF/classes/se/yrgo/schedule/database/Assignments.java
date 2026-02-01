@@ -1,6 +1,6 @@
-package se.yrgo.schedule.domain;
+package se.yrgo.schedule.database;
 
-import se.yrgo.schedule.database.AccessException;
+import se.yrgo.schedule.domain.Assignment;
 
 import java.util.List;
 

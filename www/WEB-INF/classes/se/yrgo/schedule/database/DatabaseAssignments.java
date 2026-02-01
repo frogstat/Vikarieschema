@@ -1,7 +1,6 @@
 package se.yrgo.schedule.database;
 
 import se.yrgo.schedule.domain.Assignment;
-import se.yrgo.schedule.domain.Assignments;
 import se.yrgo.schedule.domain.School;
 import se.yrgo.schedule.domain.Substitute;
 
