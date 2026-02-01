@@ -15,6 +15,11 @@ import java.util.List;
 
 public class XmlFormatter implements Formatter {
 
+    /**
+     * Converts a list of assignments to XML.
+     * @param assignments The list of assignments, containing school, address, substitute and date.
+     * @return The finished document
+     */
     @Override
     public String format(List<Assignment> assignments) {
         if (assignments.isEmpty()) {
