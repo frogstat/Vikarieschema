@@ -1,4 +1,4 @@
-package se.yrgo.schedule.database;
+package se.yrgo.schedule.servlet;
 
 import javax.servlet.http.*;
 
@@ -46,6 +46,9 @@ public class ParamParser {
     }
 
 
+    /**
+     * Checks which format is requested and sets the appropriate content type.
+     */
     private void parseContentType() {
         // Default to text/html
         if (format != null && format.equalsIgnoreCase("json")) {
