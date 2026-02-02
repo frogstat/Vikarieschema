@@ -31,4 +31,4 @@ lwp-request -m HEAD http://localhost:8080/v1?format=json
 ./test_status_codes.sh
 
 ```
-If using Powershell, rethink your life decisions.
+If using Powershell, please don't.
