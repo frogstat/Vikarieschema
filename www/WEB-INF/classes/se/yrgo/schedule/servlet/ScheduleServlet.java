@@ -78,9 +78,6 @@ public class ScheduleServlet extends HttpServlet {
             //This will check if the list of assignments is empty.
             if (result.equals("[]") || result.equals("<schedules></schedules>")) {
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-                out.println("ERROR: Your query returned no results.");
-            } else {
-
             }
 
         } catch (IllegalArgumentException e) {

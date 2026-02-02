@@ -14,20 +14,33 @@ check_status(){
 }
 
 
-echo "Testing status codes..."
+echo "Testing status codes for json..."
 echo ""
-echo "Testing valid URL. Should return 200"
+echo "JSON: Valid URL. Should return 200."
 my_status=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' "http://localhost:8080/v1?format=json&substitute_id=1")
 check_status $my_status "200"
 echo $my_status
 
-echo "Testing valid URL, but invalid substitute_id. Should return 404."
+echo "JSON: Valid URL, but invalid substitute_id. Should return 404."
 my_status=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' "http://localhost:8080/v1?format=json&substitute_id=122")
 check_status $my_status "404"
 echo $my_status
+
+echo "XML: Valid URL. Should return 200."
+my_status=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' "http://localhost:8080/v1?format=xml&substitute_id=1")
+check_status $my_status "200"
+echo $my_status
+
+echo "XML: Valid URL, but invalid substitute_id. Should return 404."
+my_status=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' "http://localhost:8080/v1?format=xml&substitute_id=122")
+check_status $my_status "404"
+echo $my_status
+
 
 echo "Testing invalid format. Should return 400."
 my_status=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' "http://localhost:8080/v1?format=idunno")
 check_status $my_status "400"
 echo $my_status
+
 exit 0
+
