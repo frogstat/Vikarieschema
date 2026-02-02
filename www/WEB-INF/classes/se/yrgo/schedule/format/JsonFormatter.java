@@ -7,7 +7,6 @@ import java.util.List;
 
 public class JsonFormatter implements Formatter {
 
-
     /**
      * Converts a list of assignments to JSON.
      * @param assignments The list of assignments, containing school, address, substitute and date.
