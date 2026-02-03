@@ -2,7 +2,20 @@
 
 This is a simple program for an assignment that hosts a website with information from a database file.
 
-Supports only JSON and XML.
+# Explanation
+
+When the program is compiled and running, a locally hosted server will be started. This server will host the contents of the database vikare.db.
+
+You can find this database in www/WEB-INF/resources/vikarie.db
+
+This program uses port 8080.
+
+supported formats are: json, xml.
+
+supported types to search by are substitute_id and day, both individually and together.
+
+example URL: http://localhost:8080/v1?format=json&substitute_id=1&day=2018-01-15
+
 
 # Instructions
 
