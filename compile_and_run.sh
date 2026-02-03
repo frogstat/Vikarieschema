@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "sites:"
 echo "  http://localhost:8080/v1?format=json"
 echo "  http://localhost:8080/v1?format=xml"
