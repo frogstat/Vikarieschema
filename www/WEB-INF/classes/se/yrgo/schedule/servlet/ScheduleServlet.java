@@ -75,8 +75,8 @@ public class ScheduleServlet extends HttpServlet {
             String result = formatter.format(assignments);
             out.println(result);
 
-            //This will check if the list of assignments is empty.
-            if (result.equals("[]") || result.equals("<schedules></schedules>")) {
+            //This will check if the list of assignments is empty, which means it won't find anything.
+            if (assignments.isEmpty()) {
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             }
 

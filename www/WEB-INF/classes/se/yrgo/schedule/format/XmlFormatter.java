@@ -23,7 +23,10 @@ public class XmlFormatter implements Formatter {
     @Override
     public String format(List<Assignment> assignments) {
         if (assignments.isEmpty()) {
-            return "<schedules></schedules>";
+            return """
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <schedules></schedules>
+                    """;
         }
 
         try {
